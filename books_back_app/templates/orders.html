@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Список заказов{% endblock %}
+
+{% block content %}
+<!-- <div class="main__image">
+</div> -->
+
+
+<div class="container">
+
+    <div class="cards__wrapper">
+        <div class="cards__info">
+            <h2 class="cards__info-title">Услуги</h2>
+            
+            <div class="cards__info-text">
+                <form class="cards__search" action="/" method="GET">
+                    <input name="ord" class="cards__input" placeholder="Найти услугу" type="text" value = {{data.query_c}}>
+                    <button class="btn" type="submit">Найти</button>
+                </form>
+            </div>
+            
+        </div>
+        <div class="cards__list">
+            {% for order in data.orders %}
+           {% include 'order_element.html' with element=order%}
+        {% empty %}
+            <h2 class="empty__list">Такой услуги нет</h2>
+        {% endfor %}
+        </div>
+    </div>
+    {% endblock %}
+</div>
+
